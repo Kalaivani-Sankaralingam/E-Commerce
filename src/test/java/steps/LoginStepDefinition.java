@@ -39,8 +39,5 @@ public class LoginStepDefinition {
     public void user_can_login_to_the_home_page() {
         Assert.assertEquals("Successfully login to Home Page",expectedTitle,driver.getTitle());
     }
-    @Given("user in the home page")
-    public void userInTheHomePage() {
-        loginpage.homePage();
-    }
+
 }
