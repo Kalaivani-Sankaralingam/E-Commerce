@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPageObject {
     private WebDriver driver;
@@ -31,6 +33,8 @@ public class LoginPageObject {
         driver.get("http://www.automationpractice.com");
     }
     public void signIn(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOf(signIn));
         signIn.click();
     }
     public void email(){
@@ -47,5 +51,12 @@ public class LoginPageObject {
         verifyBtnSignIn = btnSignIn.isDisplayed();
         Assert.assertTrue(verifyBtnSignIn);
         btnSignIn.click();
+    }
+    public void homePage(){
+        openURL();
+        signIn();
+        email();
+        password();
+        clickSignIn();
     }
 }
